@@ -24,9 +24,6 @@ public class Lecture {
     private String content;
 
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
-    private List<Practice> practices;
-
-    @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
     private List<Quiz> quizzes;
 
     public Lecture() {

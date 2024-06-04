@@ -18,7 +18,6 @@ public class UserService {
     @Autowired
     private RoleRepository roleRepository;
 
-
     //----------------------- Сервисы ролей ----------------------------
 
     public List<Role> getAllRoles() {
@@ -28,6 +27,7 @@ public class UserService {
     public Role getRoleById(Long id){
         return roleRepository.findById(id).orElse(null);
     }
+
     public Role getRoleByName(String name){
         return roleRepository.findByName(name);
     }
@@ -41,9 +41,11 @@ public class UserService {
     }
 
     public void updateRole(Role role){
-        Role role1 = getRoleById(role.getId());
-        role1.setName(role.getName());
-        roleRepository.save(role1);
+        Role existingRole = getRoleById(role.getId());
+        if (existingRole != null) {
+            existingRole.setName(role.getName());
+            roleRepository.save(existingRole);
+        }
     }
 
     //-------------------- Сервисы пользователей -------------------------
@@ -56,12 +58,18 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public  User getUserByUsername(String username){
+    public User getUserByUsername(String username){
         return userRepository.findByUsername(username);
     }
 
     public void createUser(User user){
-        userRepository.save(user);
+        Role role = roleRepository.findById(user.getRole().getId()).orElse(null);
+        if (role != null) {
+            user.setRole(role);
+            userRepository.save(user);
+        } else {
+            throw new IllegalArgumentException("Role not found");
+        }
     }
 
     public void deleteUser(Long id){
@@ -69,13 +77,18 @@ public class UserService {
     }
 
     public void updateUser(User user){
-        User user1 = getUserById(user.getId());
-        Role role = roleRepository.getById(user.getRole().getId());
-        user1.setUsername(user.getUsername());
-        user1.setPassword(user.getPassword());
-        user1.setEmail(user.getEmail());
-        user1.setRole(role);
-        userRepository.save(user1);
+        User existingUser = getUserById(user.getId());
+        if (existingUser != null) {
+            Role role = roleRepository.findById(user.getRole().getId()).orElse(null);
+            if (role != null) {
+                existingUser.setUsername(user.getUsername());
+                existingUser.setPassword(user.getPassword());
+                existingUser.setEmail(user.getEmail());
+                existingUser.setRole(role);
+                userRepository.save(existingUser);
+            } else {
+                throw new IllegalArgumentException("Role not found");
+            }
+        }
     }
-
 }
