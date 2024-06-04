@@ -8,15 +8,18 @@ import java.util.List;
 
 @Getter
 @Setter
-@Table(name="role")
+@Entity
+@Table(name = "role")
 public class Role {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "BIGSERIAL", name = "role_id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private Long id;
-    @Column(columnDefinition = "TEXT", name = "name")
+
+    @Column(name = "name", columnDefinition = "TEXT")
     private String name;
+
     @OneToMany(mappedBy = "role", cascade = CascadeType.REMOVE)
     private List<User> user;
 
