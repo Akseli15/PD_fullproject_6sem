@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.util.Map;
 
 @Getter
@@ -21,6 +22,10 @@ public class StudentProgress {
     private User user;
 
     @Convert(converter = JsonConverter.class)
+    @Column(name = "course_results", columnDefinition = "TEXT")
+    private Map<String, Object> courseResults;
+
+    @Convert(converter = JsonConverter.class)
     @Column(name = "lecture_results", columnDefinition = "TEXT")
     private Map<String, Object> lectureResults;
 
@@ -35,10 +40,12 @@ public class StudentProgress {
     public StudentProgress() {
     }
 
-    public StudentProgress(User user, Map<String, Object> lectureResults, Map<String, Object> quizResults, Map<String, Object> achievements) {
+    public StudentProgress(Long id, User user, Map<String, Object> courseResults, Map<String,
+            Object> lectureResults, Map<String, Object> quizResults, Map<String, Object> achievements) {
+        this.id = id;
         this.user = user;
+        this.courseResults = courseResults;
         this.lectureResults = lectureResults;
-
         this.quizResults = quizResults;
         this.achievements = achievements;
     }

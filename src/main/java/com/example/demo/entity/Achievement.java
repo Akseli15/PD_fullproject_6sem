@@ -21,11 +21,16 @@ public class Achievement {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
+    @Lob
+    @Column(name = "image", columnDefinition = "BYTEA")
+    private byte[] image;
+
     public Achievement() {
     }
 
-    public Achievement(String name, String description) {
+    public Achievement(String name, String description, byte[] image) {
         this.name = name;
         this.description = description;
+        this.image = image;
     }
 }
