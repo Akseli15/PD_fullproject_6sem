@@ -1,14 +1,14 @@
 package com.example.demo.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("")
+@Controller
 public class PageController {
 
     @GetMapping("/quizes")
     public String showQuizesPage() {
-        return "quizes.html";
+        return "quizes";
     }
 
     @GetMapping("/profile")
@@ -18,26 +18,26 @@ public class PageController {
 
     @GetMapping("/chat")
     public String showChatPage() {
-        return "chat.html";
+        return "chat";
     }
 
     @GetMapping("/disciplines")
     public String showDisciplinesPage() {
-        return "disciplines.html";
+        return "disciplines";
     }
 
     @GetMapping("/index")
     public String showIndexPage() {
-        return "index.html";
+        return "index";
     }
 
     @GetMapping("/disc_mathematics")
     public String showDiscMathematicsPage() {
-        return "disc_mathematics.html";
+        return "disc_mathematics";
     }
 
     @GetMapping("/lections")
     public String showLectionsPage() {
-        return "lections.html";
+        return "lections";
     }
 }

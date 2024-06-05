@@ -8,12 +8,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MVConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // Serving images from the resources/templates/img directory
-        registry.addResourceHandler("/templates/img/**")
+        // Serving images from the templates/img directory
+        registry.addResourceHandler("/img/**")
                 .addResourceLocations("classpath:/templates/img/");
 
-        // Serving CSS from the resources/templates/css directory
-        registry.addResourceHandler("/templates/css/**")
+        // Serving CSS from the templates/css directory
+        registry.addResourceHandler("/css/**")
                 .addResourceLocations("classpath:/templates/css/");
     }
 }
+
