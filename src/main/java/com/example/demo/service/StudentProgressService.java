@@ -16,4 +16,8 @@ public interface StudentProgressService {
     StudentProgress updateStudentProgress(Long id, StudentProgress studentProgress);
 
     void deleteStudentProgress(Long id);
+
+    Optional<StudentProgress> getStudentProgressByUserId(Long userId);
+
+    List<StudentProgress> getAllStudentProgressByUserId(Long userId);
 }

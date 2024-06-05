@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.StudentProgress;
+import com.example.demo.entity.User;
 import com.example.demo.repository.StudentProgressRepository;
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class StudentProgressServiceImpl implements StudentProgressService {
 
     @Autowired
     private StudentProgressRepository studentProgressRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public StudentProgress saveStudentProgress(StudentProgress studentProgress) {
@@ -48,5 +53,21 @@ public class StudentProgressServiceImpl implements StudentProgressService {
     @Override
     public void deleteStudentProgress(Long id) {
         studentProgressRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<StudentProgress> getStudentProgressByUserId(Long userId) {
+        return studentProgressRepository.findByUserId(userId);
+    }
+
+    @Override
+    public List<StudentProgress> getAllStudentProgressByUserId(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            return studentProgressRepository.findByUser(user);
+        } else {
+            throw new RuntimeException("User not found with id " + userId);
+        }
     }
 }
