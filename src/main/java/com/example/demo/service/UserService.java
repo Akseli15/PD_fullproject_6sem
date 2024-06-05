@@ -51,7 +51,9 @@ public class UserService {
     //-------------------- Сервисы пользователей -------------------------
 
     public List<User> getAllUsers(){
-        return userRepository.findAll();
+        List<User> users = userRepository.findAll();
+        users.forEach(user -> user.setRole(user.getRole()));
+        return users;
     }
 
     public User getUserById(Long id){
