@@ -11,6 +11,11 @@ public class PageController {
         return "quizes";
     }
 
+    @GetMapping("/test")
+    public String showTestPage() {
+        return "test";
+    }
+
     @GetMapping("/profile")
     public String showProfilePage() {
         return "profile";

@@ -374,7 +374,6 @@ width: 1em;
 
 .disc_right{
     margin-left: 1em;
-    width:60%;
 }
 .disc_right_title_info_sem{
     font-size: 1.2em;
@@ -755,4 +754,102 @@ justify-content: space-between;
 }
 .no_padd{
     padding: 0;
+}
+
+/*-----------------------TEST----------------------*/
+
+.test_container{
+    position: relative;
+    padding: 1.5em;
+    width: 95%;
+    margin: 0 auto;
+    height: 25em;
+    border: 0.25em solid rgba(254, 220, 130, 1);
+    border-radius: 1.25em;
+    background-color: rgba(47, 47, 47, 1);
+}
+.test{
+    align-items: center;
+    width: 70%;
+    margin: 0 auto;
+    
+}
+.rotate90{
+    margin: 0 1em ;
+    width: 1.5em;
+    rotate: 90deg;
+}
+.rotate270{
+    margin: 0 1em;
+    width: 1.5em;
+    rotate: 270deg;
+}
+
+.quiz_name{
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.25em;
+    margin-bottom: 1em;
+}
+
+.disc_right_title.test{
+    margin: 0;
+    margin-bottom: .7em;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+
+}
+.test_left{
+    width: 52%;
+}
+
+.test_right{
+    text-align: right;
+    width: 48%;
+
+}
+.file_desc.test{
+    font-size: 1em;
+    font-weight: 300;
+}
+.test_right_button{
+    border-radius: 0.625em;
+    font-size: 1em;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    margin: .2em 1em;
+    width: auto;
+    color: white;
+    padding: .6em 2em;
+    background-color: rgba(64, 140, 255, 1);
+}
+
+.test_right_button.on{
+    background-color:rgba(74, 195, 65, 1);
+}
+.display_flex.jc{
+    width: 92%;
+    display: flex;
+    bottom: 1.5em;
+    position: absolute;
+    justify-content: space-between;
+
+}
+.test_page{
+    padding: .3em 1.2em;
+    background-color:white;
+    border-radius: .5em;
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+}
+.test_page.time{
+
+    padding: .3em 1.2em;
+    border: 2px solid rgba(109, 109, 109, 1);
+    background-color: rgba(65, 65, 65, 1) ;
+    border-radius: .5em;
+    font-size: 1em;
+    color: rgba(243, 139, 139, 1);
+    font-weight: 500;
 }
